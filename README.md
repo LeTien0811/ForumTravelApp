@@ -1,3 +1,3 @@
 # travel_torum_app
 
-A new Flutter project.
+Forum Travel App using Flutter running all platform.
