@@ -5,7 +5,6 @@ class LikedPostListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Khi có service, em sẽ lấy danh sách bài đã thích ở đây
     return const Center(
       child: Padding(
         padding: EdgeInsets.all(20.0),

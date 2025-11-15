@@ -14,21 +14,17 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-// Chúng ta cần DefaultTabController, nên cần dùng StatefulWidget
-// hoặc bọc bằng DefaultTabController
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    // Lấy thông tin người dùng từ AuthService
     final member = context.watch<AuthService>().member;
 
-    // Nếu vì lý do gì đó member bị null, hiển thị loading
     if (member == null) {
       return const Center(child: CircularProgressIndicator());
     }
 
     return DefaultTabController(
-      length: 2, // 2 tab: Bài đăng và Đã thích
+      length: 2,
       child: Scaffold(
         backgroundColor: AppColors.white,
         appBar: AppBar(

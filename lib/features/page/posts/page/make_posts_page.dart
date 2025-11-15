@@ -89,7 +89,6 @@ class _MakePostsPage extends State<MakePostsPage> {
       // 3. Nếu có kết quả (người dùng đã CHỌN)
       _selectedCoordinates = result; // LƯU TỌA ĐỘ
 
-      // 4. (Cố gắng) lấy tên địa chỉ
       try {
         List<geo.Placemark> placemarks = await geo.placemarkFromCoordinates(
           _selectedCoordinates!.latitude,
@@ -120,23 +119,18 @@ class _MakePostsPage extends State<MakePostsPage> {
           throw Exception("Geocoding không tìm thấy placemarks");
         }
       } catch (e) {
-        // 5. (THẤT BẠI) Bị lỗi ở CATCH
         print("Lỗi geocoding: $e");
-        // ---- GIẢI PHÁP MỚI ----
-        // Không báo lỗi, mà dùng tọa độ làm tên
         setState(() {
           _locationAddress =
               "Vị trí: ${result.latitude.toStringAsFixed(4)}, ${result.longitude.toStringAsFixed(4)}";
         });
       }
     } catch (e) {
-      // 6. Bắt lỗi (từ Navigator hoặc lỗi khác)
       print("Lỗi _pickLocation: $e");
       setState(() {
         _error = "Đã xảy ra lỗi khi chọn vị trí.";
       });
     } finally {
-      // 7. Luôn luôn tắt loading
       setState(() {
         _isFetchingLocation = false;
       });

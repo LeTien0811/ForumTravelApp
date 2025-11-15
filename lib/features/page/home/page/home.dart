@@ -3,11 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_torum_app/common/widgets/circle_button/circle_app_button_new.dart';
 import 'package:travel_torum_app/common/widgets/post/post_list.dart';
-import 'package:travel_torum_app/data/model/post/media_model.dart';
-import 'package:travel_torum_app/data/model/member_model.dart';
-import 'package:travel_torum_app/data/model/post/post_comment_model.dart';
-import 'package:travel_torum_app/data/model/post/post_like_model.dart';
-import 'package:travel_torum_app/data/model/post/post_model.dart';
 import 'package:travel_torum_app/features/page/posts/services/post_services.dart';
 
 class HomeScreen extends StatefulWidget {

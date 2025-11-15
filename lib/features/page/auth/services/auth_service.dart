@@ -13,7 +13,6 @@ class AuthService extends ChangeNotifier {
     _startSplashTimer();
   }
 
-  // Đây là logic từ file MainApp cũ của bạn
   Future<void> _startSplashTimer() async {
     final minimumDelay = Future.delayed(const Duration(seconds: 2));
     final checkAuth = AuthLocalService().getLoginInfo();
@@ -23,7 +22,7 @@ class AuthService extends ChangeNotifier {
     notifyListeners(); // Thông báo cho GoRouter
   }
 
-  // Loginva reigster sẽ gọi hàm này
+  // Login va reigster sẽ gọi hàm này
   void authSuccess(MemberModel member) {
     _member = member;
     notifyListeners();
@@ -32,7 +31,7 @@ class AuthService extends ChangeNotifier {
   // Nút Logout trong Drawer sẽ gọi hàm này
   void logout() {
     _member = null;
-    AuthLocalService().removeLoginInfo(); // Xóa local storage
+    AuthLocalService().removeLoginInfo();
     notifyListeners();
   }
 }

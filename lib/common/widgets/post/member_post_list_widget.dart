@@ -28,7 +28,6 @@ class MemberPostListWidget extends StatelessWidget {
       );
     }
 
-    // Tái sử dụng PostCard mà chúng ta đã làm
     return ListView.builder(
       itemCount: myPosts.length,
       itemBuilder: (context, index) {

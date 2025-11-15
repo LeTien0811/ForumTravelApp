@@ -20,8 +20,6 @@ class _PostDetailPageState extends State<PostDetailPage> {
   bool _isVideoInitialized = false;
   final TextEditingController _commentController = TextEditingController();
   
-  // Tạo một bản sao cục bộ của danh sách bình luận
-  // để chúng ta có thể thêm bình luận mới (Optimistic UI)
   late List<PostCommentModel> _comments;
 
   @override
@@ -50,8 +48,6 @@ class _PostDetailPageState extends State<PostDetailPage> {
     super.dispose();
   }
 
-  // --- HÀM TÁI SỬ DỤNG TỪ POSTCARD ---
-  // (Không thay đổi)
   Widget _buildHeader() {
     return Padding(
       padding: const EdgeInsets.all(12.0),
@@ -304,9 +300,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         final comment = _comments[index];
-        
-        // Model `PostCommentModel` của em bị thiếu `MemberModel author`
-        // dùng author của bài post để hiển thị
+      
         final author = widget.post.author; 
 
         return Padding(
@@ -352,25 +346,23 @@ class _PostDetailPageState extends State<PostDetailPage> {
       return; // Không gửi comment rỗng
     }
 
-    // 1. (Optimistic UI) Cập nhật UI ngay lập tức
     final newComment = PostCommentModel(
       id: "temp-${DateTime.now().millisecondsSinceEpoch}",
       content: content,
       create_at: DateTime.now(),
-      // author: ... (lấy từ authService)
     );
 
     setState(() {
-      _comments.add(newComment); // Thêm vào danh sách cục bộ
-      _commentController.clear(); // Xóa ô nhập
-      FocusScope.of(context).unfocus(); // Ẩn bàn phím
+      _comments.add(newComment); 
+      _commentController.clear();
+      FocusScope.of(context).unfocus(); 
     });
   }
 
   Widget _buildCommentInput() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0).copyWith(
-        bottom: MediaQuery.of(context).padding.bottom + 8.0, // Thêm padding cho tai thỏ/thanh gesture
+        bottom: MediaQuery.of(context).padding.bottom + 8.0, 
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -387,7 +379,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
         children: [
           CircleAvatar(
             radius: 18,
-            backgroundImage: CachedNetworkImageProvider(widget.post.author.avata_url), // (Tạm dùng avatar của author)
+            backgroundImage: CachedNetworkImageProvider(widget.post.author.avata_url), 
           ),
           const SizedBox(width: 10),
           Expanded(
@@ -432,15 +424,13 @@ class _PostDetailPageState extends State<PostDetailPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Phần bài đăng (tái sử dụng từ PostCard)
                   _buildHeader(),
-                  _buildContent(), // Đã sửa (dùng full content)
+                  _buildContent(), 
                   _buildMedia(),
                   _buildStats(),
                   const Divider(height: 1),
                   _buildActions(),
                   
-                  // Phần bình luận (mới)
                   Divider(thickness: 8, color: Colors.grey[200]),
                   Padding(
                     padding: const EdgeInsets.all(16.0),

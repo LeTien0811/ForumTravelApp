@@ -3,10 +3,9 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 import 'package:location/location.dart'
-    as mobile_location; // Đổi tên để tránh xung đột
+    as mobile_location; 
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-// Import 2 thư viện này
 // import 'dart:html' as html; // Chỉ dùng cho Web
 import 'package:geocoding/geocoding.dart' as geo;
 import 'package:travel_torum_app/core/config/theme/app_colors.dart'; // Dùng cho Search
@@ -19,7 +18,6 @@ class MapPickerView extends StatefulWidget {
 }
 
 class _MapPickerViewState extends State<MapPickerView> {
-  // Vị trí mặc định (ví dụ: trung tâm TP.HCM)
   LatLng _initialPosition = const LatLng(10.7769, 106.7009);
   LatLng? _selectedPosition;
   bool _isLoading = true;
@@ -173,6 +171,7 @@ class _MapPickerViewState extends State<MapPickerView> {
           ),
         ],
       ),
+      
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : Stack(
@@ -189,7 +188,7 @@ class _MapPickerViewState extends State<MapPickerView> {
                       urlTemplate:
                           'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                       userAgentPackageName:
-                          'com.example.app', // Thay bằng tên package của bạn
+                          'com.example.app', 
                     ),
                   ],
                 ),
