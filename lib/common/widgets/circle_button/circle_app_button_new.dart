@@ -15,14 +15,18 @@ class CircleAppButtonNew extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(64, 64),
+        minimumSize: const Size(64, 64),
         backgroundColor: AppColors.yellow,
         elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100)
-        )
+        shape: const CircleBorder(),
+        padding: EdgeInsets.zero,
       ),
-      child: ImageIcon(AssetImage('${AppImages.basePath}plusIcon.png'), color: AppColors.black, size: 18,
-    ));
+      child: ImageIcon(
+        AssetImage(
+          '${AppImages.basePath}plusIcon.png'),
+          color: AppColors.black, 
+          size: 24,
+      ),
+    );
   }
 }

@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:travel_torum_app/core/config/theme/app_colors.dart';
 
@@ -29,6 +28,12 @@ class LargeAppButtonSecondary extends StatelessWidget {
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12)
       ),
-      child: Text(title));
+      child: Text(
+        title,
+        style: TextStyle(
+          color: AppColors.black
+        ),
+        )
+      );
   }
 }

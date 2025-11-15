@@ -7,8 +7,22 @@ environment:
   sdk: ^3.9.2
 
 dependencies:
+  flutter_map: ^6.1.0 # Thư viện bản đồ OSM
+  latlong2: ^0.9.0    # Thư viện xử lý LatLng cho flutter_map
+  provider: ^6.1.2
+  image_picker: ^1.0.7  # Để chọn ảnh/video từ thư viện
+  location: ^5.0.3      # Để lấy vị trí GPS hiện tại
+  geocoding: ^2.1.1     # Để đổi tọa độ (lat/lng) sang địa chỉ (tên đường, thành phố)
+  validators: ^3.0.0
+  shared_preferences: ^2.5.3
+  flutter_secure_storage: ^9.2.4
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.9
+  go_router: ^17.0.0
+  cached_network_image: ^3.4.1
+  video_player: ^2.10.1
+  timeago: ^3.7.1
 
 dev_dependencies:
   flutter_test:

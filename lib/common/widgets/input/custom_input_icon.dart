@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
+// Giả sử AppColors đã được định nghĩa và có màu 'blue' và 'lightGray'
 import 'package:travel_torum_app/core/config/theme/app_colors.dart';
 
-class CustomInputs extends StatefulWidget{
+class CustomInputsIcon extends StatefulWidget{
   final ValueChanged<String> onChanged;
   final String label;
   final double ? width;
   final double ? height;
+  final IconData? icon; // <-- THÊM THUỘC TÍNH ICON
 
-  const CustomInputs({
+  const CustomInputsIcon({
     required this.onChanged,
     required this.label,
     this.width,
     this.height,
+    this.icon, // <-- THÊM ICON VÀO CONSTRUCTOR
     super.key
   });
 
   @override
-  State<CustomInputs> createState() => _CustomInputs();
+  State<CustomInputsIcon> createState() => _CustomInputsIcon();
 }
 
-class _CustomInputs extends State<CustomInputs> {
+class _CustomInputsIcon extends State<CustomInputsIcon> {
   String _currentInput = '';
 
   void _handleInputChange(String value) {
@@ -33,20 +36,27 @@ class _CustomInputs extends State<CustomInputs> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
       child: TextField(
         onChanged: _handleInputChange,
         decoration: InputDecoration(
-          labelText: widget.label,
+          prefixIcon: widget.icon != null
+              ? Icon(widget.icon, color: AppColors.blue)
+              : null,
+          
           filled: true,
           fillColor: AppColors.gray,
+          
+          labelText: widget.label,
+          
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(
               width: 0,
-              style: BorderStyle.none
+              style: BorderStyle.none,
             )
           ),
+          
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(
@@ -56,6 +66,6 @@ class _CustomInputs extends State<CustomInputs> {
           )
         ),
       ),
-      );
+    );
   }
 }
